@@ -1,0 +1,34 @@
+﻿@using (Html.BeginForm("ReadOnly", "Home", FormMethod.Post))
+{
+    <input type="submit" value="ReadOnly" />
+}
+
+@using (Html.BeginForm("Admin", "Home", FormMethod.Post))
+{
+    <input type="submit" value="Admin" />
+}
+
+@using (Html.BeginForm("GetPaths", "Home", FormMethod.Post))
+{
+    <input type="text" name="origin" placeholder="Origin point..." />
+    <input type="text" name="destination" placeholder="Destination point..." />
+
+    <input type="submit" value="Get" />
+}
+
+@if (((IEnumerable<string>)ViewData["paths"]) != null)
+{
+    foreach (string path in (IEnumerable<string>)ViewData["paths"])
+    {
+        <span>@path</span><br />
+    }
+}
+
+@using (Html.BeginForm("SetNode", "Home", FormMethod.Post))
+{
+    <input type="text" name="name" placeholder="Node name..." />
+
+    <input type="submit" value="Set" />
+}
+
+@ViewData["message"]
